@@ -1,6 +1,14 @@
 import React, { useCallback, useState, useEffect } from 'react';
 
-import { fileMap, defineFileAction, ChonkyIconName, FullFileBrowser, setChonkyDefaults, ChonkyActions, CustomVisibilityState } from 'chonky';
+import {
+    fileMap,
+    defineFileAction,
+    ChonkyIconName,
+    FullFileBrowser,
+    setChonkyDefaults,
+    ChonkyActions,
+    CustomVisibilityState,
+} from 'chonky';
 import { ChonkyIconFA } from 'chonky-icon-fontawesome';
 import styled from 'styled-components';
 
@@ -53,7 +61,7 @@ const StoryComponent = () => {
         []
     );
 
-    useEffect( () => {
+    useEffect(() => {
         console.log('copyPaste changed to: ', copyPaste);
         console.log('hideShow changed to: ', hideShow);
         console.log('activate changed to: ', activate);
@@ -62,7 +70,7 @@ const StoryComponent = () => {
     const customActionHandler = useCallback(
         data => {
             console.log(`File action [${data.id}]`, data);
-            switch(data.id) {
+            switch (data.id) {
                 case CopyFiles.id: {
                     setCopyPaste(true);
                     break;
@@ -97,12 +105,12 @@ const StoryComponent = () => {
             toolbar: true,
             contextMenu: true,
             group: 'Actions',
-            icon: ChonkyIconName.paste
+            icon: ChonkyIconName.paste,
         },
         hotkeys: ['ctrl+v', 'cmd+v'],
         customVisibility: () => {
             return copyPaste ? CustomVisibilityState.Default : CustomVisibilityState.Disabled;
-        }
+        },
     });
 
     const CopyFiles = defineFileAction({
@@ -113,12 +121,12 @@ const StoryComponent = () => {
             toolbar: true,
             contextMenu: true,
             group: 'Actions',
-            icon: ChonkyIconName.copy
+            icon: ChonkyIconName.copy,
         },
         hotkeys: ['ctrl+c', 'cmd+c'],
         customVisibility: () => {
             return copyPaste ? CustomVisibilityState.Disabled : CustomVisibilityState.Default;
-        }
+        },
     });
 
     const ActivateOptions = defineFileAction({
@@ -129,12 +137,12 @@ const StoryComponent = () => {
             toolbar: true,
             contextMenu: true,
             group: 'Actions',
-            icon: ChonkyIconName.paste
+            icon: ChonkyIconName.paste,
         },
         hotkeys: ['ctrl+t', 'cmd+t'],
         customVisibility: () => {
             return activate ? CustomVisibilityState.Active : CustomVisibilityState.Default;
-        }
+        },
     });
 
     const HiddenOptions = defineFileAction({
@@ -145,12 +153,12 @@ const StoryComponent = () => {
             toolbar: true,
             contextMenu: true,
             group: 'Actions',
-            icon: ChonkyIconName.hidden
+            icon: ChonkyIconName.hidden,
         },
         hotkeys: ['ctrl+h', 'cmd+h'],
         customVisibility: () => {
             return hideShow ? CustomVisibilityState.Hidden : CustomVisibilityState.Default;
-        }
+        },
     });
 
     const ShowOptions = defineFileAction({
@@ -161,14 +169,15 @@ const StoryComponent = () => {
             toolbar: true,
             contextMenu: true,
             group: 'Actions',
-            icon: ChonkyIconName.hidden
+            icon: ChonkyIconName.hidden,
         },
         hotkeys: ['ctrl+h', 'cmd+h'],
         customVisibility: () => {
             return hideShow ? CustomVisibilityState.Default : CustomVisibilityState.Hidden;
-        }
+        },
     });
 
+    const _enableListView = ChonkyActions.EnableListView.id;
 
     return (
         <StyledWrapper>
@@ -183,12 +192,13 @@ const StoryComponent = () => {
                         PasteFiles,
                         ActivateOptions,
                         HiddenOptions,
-                        ShowOptions
+                        ShowOptions,
                     ]}
                     thumbnailGenerator={thumbnailGenerator}
                     darkMode={storySettings.darkMode}
                     disableDragAndDrop={!storySettings.dnd}
                     disableSelection={!storySettings.selection}
+                    defaultFileViewActionId={_enableListView}
                 />
             </div>
             <Paper className="story-controls">
