@@ -8,8 +8,7 @@ import React, { ReactElement, useEffect, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Menu from '@material-ui/core/Menu';
+import { ListSubheader, Menu } from '@mui/material';
 
 import { reduxActions } from '../../redux/reducers';
 import { selectContextMenuConfig, selectContextMenuItems } from '../../redux/selectors';
@@ -71,7 +70,10 @@ export const FileContextMenu: React.FC<FileContextMenuProps> = React.memo(() => 
     }, [contextMenuItems, hideContextMenu]);
 
     const anchorPosition = useMemo(
-        () => (contextMenuConfig ? { top: contextMenuConfig.mouseY, left: contextMenuConfig.mouseX } : undefined),
+        () =>
+            contextMenuConfig
+                ? { top: contextMenuConfig.mouseY, left: contextMenuConfig.mouseX }
+                : undefined,
         [contextMenuConfig]
     );
 

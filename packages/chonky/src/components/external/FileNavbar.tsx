@@ -4,8 +4,7 @@
  * @license MIT
  */
 
-import Box from '@material-ui/core/Box';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import { Breadcrumbs, Box } from '@mui/material';
 import React, { ReactElement, useMemo } from 'react';
 
 import { ChonkyActions } from '../../action-definitions/index';
