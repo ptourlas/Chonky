@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { Menu } from '@mui/material';
+import { Menu, Fade } from '@mui/material';
 import React, { useCallback, useMemo } from 'react';
 
 import { FileActionGroup } from '../../types/action-menus.types';
@@ -50,6 +50,7 @@ export const ToolbarDropdown: React.FC<ToolbarDropdownProps> = React.memo(props 
                 onClose={handleClose}
                 open={Boolean(anchor)}
                 transitionDuration={150}
+                TransitionComponent={Fade}
                 classes={{ list: classes.dropdownList }}
             >
                 {menuItemComponents}
