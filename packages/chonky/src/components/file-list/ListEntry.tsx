@@ -61,14 +61,14 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                 </div>
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
-                        fileModDateString ?? <span>—</span>
+                        fileModDateString ?? <span>(mod. date N/A)</span>
                     ) : (
                         <TextPlaceholder minLength={5} maxLength={15} />
                     )}
                 </div>
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
-                        fileSizeString ?? <span>—</span>
+                        fileSizeString ?? <span>(size N/A)</span>
                     ) : (
                         <TextPlaceholder minLength={10} maxLength={20} />
                     )}
@@ -113,7 +113,7 @@ const useStyles = makeLocalChonkyStyles(theme => ({
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        flex: '1 1 300px',
+        flex: '1 1 200px',
         paddingLeft: 8,
         zIndex: 20,
     },
@@ -122,7 +122,7 @@ const useStyles = makeLocalChonkyStyles(theme => ({
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        flex: '0 1 150px',
+        flex: '0 1 200px',
         padding: [2, 8],
         zIndex: 20,
     },
